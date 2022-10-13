@@ -1,0 +1,26 @@
+<div class="container">
+
+	<div class="col-sm-12">
+		<form class="form" [formGroup]="formClases"  (submit)="agregar()" enctype="multipart/form-data" errorTailor>
+			<div class="mb-3">
+				<label class="form-label">Nombre Clase</label>
+				<input [(ngModel)]="clases.clase" type="text"  class="form-control" formControlName="clase">
+			</div>
+            <div class="mb-3">
+				<label class="form-label">Tema</label>
+				<input [(ngModel)]="clases.tema" type="text"  class="form-control" formControlName="tema">
+			</div>
+            <div class="mb-3">
+				<label class="form-label">Contenido</label>
+				<input [(ngModel)]="clases.contenido" type="text"  class="form-control" formControlName="contenido">
+			</div>
+	
+		
+			<button [disabled]="formClases.invalid" class="btn btn-primary" > Agregar</button>
+		</form>
+	</div>
+	<div class="col-sm-6">
+		
+	</div>
+</div>
+ 

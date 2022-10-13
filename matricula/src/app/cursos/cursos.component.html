@@ -1,0 +1,65 @@
+
+
+<div class="container">
+	<div class="row text-center">
+		<div class="col">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Buscar.." name="filterPost" [(ngModel)]="filterPost">
+			</div>
+			
+		</div>
+		<div class="col">
+			<div class="form-group">
+				<button type="button" class="btn btn-primary" (click)="open(content)" >Agregar</button>
+			</div>
+			
+		</div>
+	</div><br> 
+		<div class="row" >
+      <div class="col-sm-4" *ngFor="let curso of cursos">
+			<div class="card" style="width: 18rem;">
+        <img  src="http://localhost:3000/api/image/{{curso.url}}"  alt="img">
+			  <div class="card-body">
+			    <h3>{{curso.nombre_cursos}}</h3>
+          <a (click)="eliminar(curso.id_cursos)" style="margin-right: 40px;" data-bs-toggle="modal" data-bs-target="#modal2" class="btn btn-danger">Borrar</a>
+          <a (click)="clases(curso.id_cursos)" class="btn btn-primary">Ver clases</a>
+  			</div>
+
+			</div>
+		</div>
+    
+
+
+		</div>	
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-agregar_cursos></app-agregar_cursos>
+  </div>
+  
+</ng-template>
+
+<div class="modal" tabindex="-1" id="modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+     
+      <div class="modal-body">
+        <p>Desea Eliminar registro.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+        <button (click)="eliminarRegistro()" type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal -->
+

@@ -1,0 +1,98 @@
+<div class="container">
+  <div class="row text-center">
+    <div class="col">
+      <div class="form-group">
+        <input type="text" class="form-control" placeholder="Buscar.." >
+      </div>
+      
+    </div>
+    <div class="col">
+      <div class="form-group">
+        <button type="button" class="btn btn-primary" (click)="open(content)" >Agregar Clase</button>
+      </div>
+      
+    </div>
+  </div><br> 
+
+  
+    <div class="row" >
+    <div class="col-sm-12" >
+      <img  src="http://localhost:3000/api/image/{{clases[0]?.url}}" style="height: 253px;
+      width: 1035px;" alt="img">
+      <h3>{{clases[0]?.nombre_cursos}}</h3>
+      <h4>Clases</h4>
+      <div class="accordion" id="accordionExample" >
+        <div class="accordion-item" *ngFor="let clase of clases[1]">
+          <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button" type="button" data-bs-toggle="collapse" 
+            aria-expanded="false" [attr.data-bs-target]="'#'+clase?.clase" [attr.aria-controls]=clase?.clase>
+              {{clase?.clase}}
+            </button>
+          </h2>
+          <div id="{{clase?.clase}}" class="accordion-collapse collapse show" aria-labelledby="headingOne" 
+          data-bs-parent="#accordionExample">
+            <div class="accordion-body">
+              <div class="form-group" style="text-align: end;">
+                <button type="button" class="btn btn-primary" (click)="open2(content2,clase?.id_clases)" >Agregar Preguntas</button>
+              </div>
+              <h4>{{clase?.tema}}</h4>
+              
+              <strong>{{clase?.contenido}}</strong> 
+              <h4>Preguntas</h4>
+              <div class="form-group" *ngFor="let Preguntas of clases[2]">
+                <p *ngIf="clase?.id_clases==Preguntas?.id_clase">- {{Preguntas?.descripcion}}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+
+    </div>  
+</div>
+
+
+<ng-template #content let-c="close" let-d="dismiss" >
+  <div class="modal-header" style="width: 700px">
+    <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-agregar-clases [curso_id]="this.id._value.id"></app-agregar-clases>
+  </div>
+
+</ng-template>
+<ng-template #content2 let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Agregar</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <app-preguntas [curso_id]="this.id._value.id" [id_clase]="this.clase"></app-preguntas>
+  </div>
+
+</ng-template>
+
+<div class="modal" tabindex="-1" id="modal2">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+       
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Desea Eliminar registro.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancerlar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" aria-label="Close">Eliminar</button>
+      </div>
+    </div>
+  </div>
+</div>

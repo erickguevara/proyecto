@@ -1,0 +1,33 @@
+           
+<div class="container">
+
+	<div class="col-sm-12">
+		<form class="form" [formGroup]="PreguntasClases"  (submit)="agregar()" enctype="multipart/form-data" errorTailor>
+			<div class="mb-3">
+				<label class="form-label">Pregunta</label>
+				<input [(ngModel)]="clases.descripcion" type="text"  class="form-control" formControlName="descripcion">
+			</div>
+	
+			<div class="mb-3">
+				<label class="form-label">Alternativa A</label>
+				<input [(ngModel)]="clases.alternativa1" (change)="onFileSelected($event)" type="file"  class="form-control" formControlName="alternativa1">
+			</div>
+            <div class="mb-3">
+				<label class="form-label">Alternativa B</label>
+				<input [(ngModel)]="clases.alternativa2" (change)="onFileSelected2($event)" type="file"  class="form-control" formControlName="alternativa2">
+			</div>
+            <div class="mb-3">
+				<label class="form-label">Alternativa C</label>
+				<input [(ngModel)]="clases.alternativa3" (change)="onFileSelected3($event)" type="file"  class="form-control" formControlName="alternativa3">
+			</div>
+            <div class="mb-3">
+				<label class="form-label">Alternativa D</label>
+				<input [(ngModel)]="clases.alternativa4" (change)="onFileSelected4($event)" type="file"  class="form-control" formControlName="alternativa4">
+			</div>
+			<button [disabled]="PreguntasClases.invalid" class="btn btn-primary" > Agregar</button>
+		</form>
+	</div>
+	<div class="col-sm-6">
+		
+	</div>
+</div>

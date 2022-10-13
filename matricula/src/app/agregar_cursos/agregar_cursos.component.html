@@ -1,0 +1,26 @@
+
+
+
+
+           
+<div class="container">
+
+	<div class="col-sm-12">
+		<form class="form" [formGroup]="formCursos"  (submit)="agregar()" enctype="multipart/form-data" errorTailor>
+			<div class="mb-3">
+				<label class="form-label">Nombre</label>
+				<input [(ngModel)]="cursos.nombre_cursos" type="text"  class="form-control" formControlName="nombre_cursos">
+			</div>
+	
+			<div class="mb-3">
+				<label class="form-label">Foto</label>
+				<input [(ngModel)]="cursos.url" (change)="onFileSelected($event)" type="file"  class="form-control" formControlName="url">
+			</div>
+			<button [disabled]="formCursos.invalid" class="btn btn-primary" > Agregar</button>
+		</form>
+	</div>
+	<div class="col-sm-6">
+		
+	</div>
+</div>
+ 
